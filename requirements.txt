@@ -3,3 +3,5 @@ pandas
 matplotlib
 seaborn
 warnings
+sklearn
+pickle5
