@@ -2,6 +2,6 @@ numpy
 pandas
 matplotlib
 seaborn
-warnings
-sklearn
+scikit-learn
 pickle5
+flask

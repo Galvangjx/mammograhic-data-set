@@ -137,13 +137,14 @@ model_classification_report(y_test, svm_clf_y_pred)
 # in this case, random forest classifier is the best model
 
 # rebuild & evaluate best model on test_df
-best_model = RandomForestClassifier(random_state=RANDOM_SEED, criterion='gini',
+best_model = RandomForestClassifier(random_state=RANDOM_SEED, criterion='gini', 
                                     max_depth=9, min_samples_leaf=4, min_samples_split=2)
+
+best_model.fit(X, y)
 
 unseen_x = test_df.iloc[:, :5]
 unseen_y = test_df['Severity']
 
-best_model.fit(X, y)
 best_model_y_pred = best_model.predict(unseen_x)
 best_model_score = accuracy_score(unseen_y, best_model_y_pred)
 best_model_auc = metrics.roc_auc_score(unseen_y, best_model_y_pred)
