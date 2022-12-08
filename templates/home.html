@@ -1,3 +1,47 @@
-<h1>
-Hello World
-</h1>
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Mammography Result Prediction</h1>
+
+  <p>BI-RADS: Your BI-RADS assessment category (0 - Incomplete, 1 - Negative, 2 - Benign, 3 - Probably Benign, 4 - Suspicous Abnormality, 5 - Highly Suggestive of Malignancy, 6 - Malignant).</p>
+  <p>Age: Your age during the mammography check up.</p>
+  <p>Shape: Shape of mass (1 - Round, 2 - Oval, 3 - Lobular, 4 - Irregular).</p>
+  <p>Margin: Margin of mass (1 - Circumscribed, 2 - Microlobulated, 3 - Obscured, 4 - Ill-defined, 5 - Spiculated).</p>
+  <p>Density: Density of mass (1 - High, 2 - Equal, 3 - Low, 4 - Fat Containing).</p>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <input type="text" name="BI-RADS" placeholder="BI-RADS" required="required" /><br>
+    	  <input type="text" name="Age" placeholder="Age" required="required" /><br>
+        <input type="text" name="Shape" placeholder="Shape" required="required" /><br>
+        <input type="text" name="Margin" placeholder="Margin" required="required" /><br>
+        <input type="text" name="Density" placeholder="Density" required="required" /><br>             
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+  
+   <br>
+   <br>
+  
+   
+ </div>
+ {{prediction_text}}
+
+  <p>1 - Malignant</p>
+  <p>0 - Benign</p>
+
+</body>
+</html>
